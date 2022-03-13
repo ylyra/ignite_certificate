@@ -2,8 +2,8 @@ import { APIGatewayProxyHandler } from "aws-lambda";
 import { document } from "../utils/dynamodbClient";
 
 interface IUserCertificate {
-  name: string;
   id: string;
+  name: string;
   created_at: string;
   grade: string;
 }
@@ -21,15 +21,15 @@ export const handler: APIGatewayProxyHandler = async (event) => {
     })
     .promise();
 
-  if (response.Items.length > 0) {
-    const userCertificate = response.Items[0] as IUserCertificate;
+  const userCertificate = response.Items[0] as IUserCertificate;
 
+  if (userCertificate) {
     return {
-      statusCode: 200,
+      statusCode: 201,
       body: JSON.stringify({
-        message: "Certificado valido.",
+        message: "Certificado válido",
         name: userCertificate.name,
-        url: `${process.env.S3_BUCKET_URL}/${id}.pdf`,
+        url: `https://certificateignite-yan.s3.sa-east-1.amazonaws.com/${id}.pdf`,
       }),
     };
   }
@@ -37,7 +37,7 @@ export const handler: APIGatewayProxyHandler = async (event) => {
   return {
     statusCode: 400,
     body: JSON.stringify({
-      message: "Certificado invalido.",
+      message: "Certificado inválido",
     }),
   };
 };

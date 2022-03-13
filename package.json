@@ -7,7 +7,7 @@
     "dev": "serverless offline",
     "dynamodb:start": "serverless dynamodb start",
     "dynamodb:install": "serverless dynamodb install",
-    "deploy": "serverless deploy -v"
+    "deploy": "serverless deploy --verbose"
   },
   "engines": {
     "node": ">=14.15.0"
@@ -17,21 +17,21 @@
     "@middy/http-json-body-parser": "^2.5.3",
     "aws-sdk": "^2.1087.0",
     "chrome-aws-lambda": "^10.1.0",
-    "dayjs": "^1.10.8",
+    "dayjs": "^1.10.7",
     "handlebars": "^4.7.7",
-    "puppeteer-core": "^13.5.1"
+    "puppeteer-core": "^12.0.1"
   },
   "devDependencies": {
     "@serverless/typescript": "^2.23.0",
     "@types/aws-lambda": "^8.10.71",
     "@types/node": "^14.14.25",
-    "esbuild": "^0.14.11",
+    "esbuild": "^0.14.2",
     "json-schema-to-ts": "^1.5.0",
-    "puppeteer": "^13.5.1",
+    "puppeteer": "^12.0.1",
     "serverless": "^2.23.0",
-    "serverless-dynamodb-local": "0.2.35",
-    "serverless-esbuild": "^1.23.3",
-    "serverless-offline": "^8.5.0",
+    "serverless-dynamodb-local": "0.2.40",
+    "serverless-esbuild": "^1.17.1",
+    "serverless-offline": "^8.3.1",
     "ts-node": "^10.4.0",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.1.3"

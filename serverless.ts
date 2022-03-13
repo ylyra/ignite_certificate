@@ -1,7 +1,7 @@
 import type { AWS } from "@serverless/typescript";
 
 const serverlessConfiguration: AWS = {
-  service: "ignite-certificate",
+  service: "ignitecertificateyan",
   frameworkVersion: "2",
   plugins: [
     "serverless-esbuild",
@@ -11,7 +11,7 @@ const serverlessConfiguration: AWS = {
   provider: {
     name: "aws",
     runtime: "nodejs14.x",
-    region: "us-east-1",
+    region: "eu-west-1",
     apiGateway: {
       minimumCompressionSize: 1024,
       shouldStartNameWithService: true,
@@ -34,21 +34,8 @@ const serverlessConfiguration: AWS = {
       },
     ],
   },
-  // import the function via paths
+  package: { individually: false, include: ["./src/templates/**"] },
   functions: {
-    hello: {
-      handler: "src/functions/hello.handler",
-      events: [
-        {
-          http: {
-            path: "hello",
-            method: "get",
-
-            cors: true,
-          },
-        },
-      ],
-    },
     generateCertificate: {
       handler: "src/functions/generateCertificate.handler",
       events: [
@@ -56,14 +43,24 @@ const serverlessConfiguration: AWS = {
           http: {
             path: "generateCertificate",
             method: "post",
-
+            cors: true,
+          },
+        },
+      ],
+    },
+    verifyCertificate: {
+      handler: "src/functions/verifyCertificate.handler",
+      events: [
+        {
+          http: {
+            path: "verifyCertificate/{id}",
+            method: "get",
             cors: true,
           },
         },
       ],
     },
   },
-  package: { individually: true },
   custom: {
     esbuild: {
       bundle: true,
