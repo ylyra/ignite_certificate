@@ -4,7 +4,10 @@
   "description": "Serverless aws-nodejs-typescript template",
   "main": "serverless.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "serverless offline",
+    "dynamodb:start": "serverless dynamodb start",
+    "dynamodb:install": "serverless dynamodb install",
+    "deploy": "serverless deploy -v"
   },
   "engines": {
     "node": ">=14.15.0"
@@ -12,7 +15,11 @@
   "dependencies": {
     "@middy/core": "^2.5.3",
     "@middy/http-json-body-parser": "^2.5.3",
-    "aws-sdk": "^2.1087.0"
+    "aws-sdk": "^2.1087.0",
+    "chrome-aws-lambda": "^10.1.0",
+    "dayjs": "^1.10.8",
+    "handlebars": "^4.7.7",
+    "puppeteer-core": "^13.5.1"
   },
   "devDependencies": {
     "@serverless/typescript": "^2.23.0",
@@ -20,6 +27,7 @@
     "@types/node": "^14.14.25",
     "esbuild": "^0.14.11",
     "json-schema-to-ts": "^1.5.0",
+    "puppeteer": "^13.5.1",
     "serverless": "^2.23.0",
     "serverless-dynamodb-local": "0.2.35",
     "serverless-esbuild": "^1.23.3",
